@@ -1,0 +1,6 @@
+FROM debian:stable-slim
+RUN apt-get update && apt-get install -y \
+  nginx \
+  openssl \
+  && rm -rf /var/lib/apt/lists/*
+CMD ["nginx", "-g", "daemon off;"]
