@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./requirements/wp_volume/server.crt:/etc/nginx/ssl/server.crt:ro
+      - ./requirements/wp_volume/server.key:/etc/nginx/ssl/server.key:ro
+      - wordPress:/var/www/html
+  
+volumes:
+  wordPress:
+  DB:
