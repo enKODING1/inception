@@ -4,6 +4,8 @@ services:
   nginx:
     build: ./requirements/nginx
     container_name: nginx
+    env_file:
+      - .env
     ports:
       - "80:80"
       - "443:443"
@@ -14,10 +16,21 @@ services:
   wordpress:
     build: ./requirements/wordpress
     container_name: wordpress
+    env_file:
+      - .env
     ports:
       - 9000:9000
     volumes:
       - wordPress:/var/www/html
+  db:
+    build: ./requirements/mariadb
+    container_name: db
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    volumes:
+      - DB:/var/lib/mysql
   
 volumes:
   wordPress:
