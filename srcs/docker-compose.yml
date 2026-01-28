@@ -11,6 +11,13 @@ services:
       - ./requirements/wp_volume/server.crt:/etc/nginx/ssl/server.crt:ro
       - ./requirements/wp_volume/server.key:/etc/nginx/ssl/server.key:ro
       - wordPress:/var/www/html
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: wordpress
+    ports:
+      - 9000:9000
+    volumes:
+      - wordPress:/var/www/html
   
 volumes:
   wordPress:
