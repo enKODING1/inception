@@ -1,6 +1,8 @@
 FROM debian:stable-slim
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y
-RUN apt-get install -y php php-fpm mariadb-server 
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+  php \
+  php-fpm \
+  mariadb-server 
 COPY ./tools/setup.sh /
 RUN chmod +x /setup.sh
 ENTRYPOINT [ "./setup.sh" ]
